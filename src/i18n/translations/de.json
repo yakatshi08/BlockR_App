@@ -1,0 +1,101 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "close": "Schließen",
+    "search": "Suchen",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "warning": "Warnung"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "contacts": "Kontakte",
+    "blacklist": "Sperrliste",
+    "schedule": "Zeitplan",
+    "settings": "Einstellungen"
+  },
+  "home": {
+    "title": "BlockR",
+    "subtitle": "Verwalten Sie Ihre Anrufe in Ruhe",
+    "activeBlacklist": "Aktive Sperrliste",
+    "blockedToday": "Heute blockiert",
+    "scheduledRules": "Geplante Regeln",
+    "quickActions": "Schnellaktionen"
+  },
+  "contacts": {
+    "title": "Kontakte",
+    "searchPlaceholder": "Kontakt suchen...",
+    "addToBlacklist": "Zur Sperrliste hinzufügen",
+    "removeFromBlacklist": "Von Sperrliste entfernen",
+    "noContacts": "Keine Kontakte gefunden",
+    "importContacts": "Kontakte importieren",
+    "selectAll": "Alle auswählen",
+    "deselectAll": "Alle abwählen"
+  },
+  "blacklist": {
+    "title": "Sperrliste",
+    "empty": "Keine gesperrten Kontakte",
+    "addContact": "Kontakt hinzufügen",
+    "blockedSince": "Gesperrt seit",
+    "unblock": "Entsperren",
+    "unblockConfirm": "Möchten Sie diesen Kontakt wirklich entsperren?",
+    "callsBlocked": "Anrufe blockiert",
+    "messagesBlocked": "Nachrichten blockiert"
+  },
+  "schedule": {
+    "title": "Zeitplan",
+    "addRule": "Regel hinzufügen",
+    "noRules": "Keine geplanten Regeln",
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "monthly": "Monatlich",
+    "once": "Einmal",
+    "from": "Von",
+    "to": "Bis",
+    "days": {
+      "monday": "Montag",
+      "tuesday": "Dienstag",
+      "wednesday": "Mittwoch",
+      "thursday": "Donnerstag",
+      "friday": "Freitag",
+      "saturday": "Samstag",
+      "sunday": "Sonntag"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "general": "Allgemein",
+    "security": "Sicherheit",
+    "theme": "Design",
+    "language": "Sprache",
+    "notifications": "Benachrichtigungen",
+    "about": "Über",
+    "darkMode": "Dunkler Modus",
+    "lightMode": "Heller Modus",
+    "changePin": "PIN ändern",
+    "exportData": "Daten exportieren",
+    "importData": "Daten importieren"
+  },
+  "security": {
+    "enterPin": "PIN eingeben",
+    "createPin": "PIN erstellen",
+    "confirmPin": "PIN bestätigen",
+    "wrongPin": "Falscher PIN",
+    "pinMismatch": "PINs stimmen nicht überein"
+  },
+  "game": {
+    "title": "Versteckspiel",
+    "score": "Punkte",
+    "moves": "Züge",
+    "pairs": "Paare",
+    "newGame": "Neues Spiel",
+    "congratulations": "Glückwunsch!",
+    "tryAgain": "Nochmal versuchen"
+  }
+}

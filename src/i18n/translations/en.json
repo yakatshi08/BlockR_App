@@ -1,0 +1,101 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning"
+  },
+  "navigation": {
+    "home": "Home",
+    "contacts": "Contacts",
+    "blacklist": "Blacklist",
+    "schedule": "Schedule",
+    "settings": "Settings"
+  },
+  "home": {
+    "title": "BlockR",
+    "subtitle": "Manage your calls with peace of mind",
+    "activeBlacklist": "Active blacklist",
+    "blockedToday": "Blocked today",
+    "scheduledRules": "Scheduled rules",
+    "quickActions": "Quick actions"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "searchPlaceholder": "Search contact...",
+    "addToBlacklist": "Add to blacklist",
+    "removeFromBlacklist": "Remove from blacklist",
+    "noContacts": "No contacts found",
+    "importContacts": "Import contacts",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all"
+  },
+  "blacklist": {
+    "title": "Blacklist",
+    "empty": "No blocked contacts",
+    "addContact": "Add contact",
+    "blockedSince": "Blocked since",
+    "unblock": "Unblock",
+    "unblockConfirm": "Do you really want to unblock this contact?",
+    "callsBlocked": "Calls blocked",
+    "messagesBlocked": "Messages blocked"
+  },
+  "schedule": {
+    "title": "Schedule",
+    "addRule": "Add rule",
+    "noRules": "No scheduled rules",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "once": "Once",
+    "from": "From",
+    "to": "To",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "security": "Security",
+    "theme": "Theme",
+    "language": "Language",
+    "notifications": "Notifications",
+    "about": "About",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "changePin": "Change PIN",
+    "exportData": "Export data",
+    "importData": "Import data"
+  },
+  "security": {
+    "enterPin": "Enter your PIN",
+    "createPin": "Create a PIN",
+    "confirmPin": "Confirm your PIN",
+    "wrongPin": "Wrong PIN",
+    "pinMismatch": "PINs don't match"
+  },
+  "game": {
+    "title": "Hide and Seek",
+    "score": "Score",
+    "moves": "Moves",
+    "pairs": "Pairs",
+    "newGame": "New game",
+    "congratulations": "Congratulations!",
+    "tryAgain": "Try again"
+  }
+}

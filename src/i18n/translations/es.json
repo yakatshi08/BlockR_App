@@ -1,0 +1,101 @@
+{
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "contacts": "Contactos",
+    "blacklist": "Lista negra",
+    "schedule": "Horario",
+    "settings": "Ajustes"
+  },
+  "home": {
+    "title": "BlockR",
+    "subtitle": "Gestiona tus llamadas con tranquilidad",
+    "activeBlacklist": "Lista negra activa",
+    "blockedToday": "Bloqueados hoy",
+    "scheduledRules": "Reglas programadas",
+    "quickActions": "Acciones rápidas"
+  },
+  "contacts": {
+    "title": "Contactos",
+    "searchPlaceholder": "Buscar contacto...",
+    "addToBlacklist": "Añadir a lista negra",
+    "removeFromBlacklist": "Quitar de lista negra",
+    "noContacts": "No se encontraron contactos",
+    "importContacts": "Importar contactos",
+    "selectAll": "Seleccionar todo",
+    "deselectAll": "Deseleccionar todo"
+  },
+  "blacklist": {
+    "title": "Lista negra",
+    "empty": "Sin contactos bloqueados",
+    "addContact": "Añadir contacto",
+    "blockedSince": "Bloqueado desde",
+    "unblock": "Desbloquear",
+    "unblockConfirm": "¿Realmente quieres desbloquear este contacto?",
+    "callsBlocked": "Llamadas bloqueadas",
+    "messagesBlocked": "Mensajes bloqueados"
+  },
+  "schedule": {
+    "title": "Horario",
+    "addRule": "Añadir regla",
+    "noRules": "Sin reglas programadas",
+    "daily": "Diario",
+    "weekly": "Semanal",
+    "monthly": "Mensual",
+    "once": "Una vez",
+    "from": "De",
+    "to": "A",
+    "days": {
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo"
+    }
+  },
+  "settings": {
+    "title": "Ajustes",
+    "general": "General",
+    "security": "Seguridad",
+    "theme": "Tema",
+    "language": "Idioma",
+    "notifications": "Notificaciones",
+    "about": "Acerca de",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "changePin": "Cambiar PIN",
+    "exportData": "Exportar datos",
+    "importData": "Importar datos"
+  },
+  "security": {
+    "enterPin": "Ingresa tu PIN",
+    "createPin": "Crea un PIN",
+    "confirmPin": "Confirma tu PIN",
+    "wrongPin": "PIN incorrecto",
+    "pinMismatch": "Los PIN no coinciden"
+  },
+  "game": {
+    "title": "Escondite",
+    "score": "Puntuación",
+    "moves": "Movimientos",
+    "pairs": "Pares",
+    "newGame": "Nuevo juego",
+    "congratulations": "¡Felicitaciones!",
+    "tryAgain": "Intentar de nuevo"
+  }
+}

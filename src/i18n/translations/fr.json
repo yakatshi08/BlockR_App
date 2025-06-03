@@ -1,0 +1,101 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "search": "Rechercher",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Attention"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "contacts": "Contacts",
+    "blacklist": "Liste noire",
+    "schedule": "Planning",
+    "settings": "Paramètres"
+  },
+  "home": {
+    "title": "BlockR",
+    "subtitle": "Gérez vos appels en toute tranquillité",
+    "activeBlacklist": "Liste noire active",
+    "blockedToday": "Bloqués aujourd'hui",
+    "scheduledRules": "Règles planifiées",
+    "quickActions": "Actions rapides"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "searchPlaceholder": "Rechercher un contact...",
+    "addToBlacklist": "Ajouter à la liste noire",
+    "removeFromBlacklist": "Retirer de la liste noire",
+    "noContacts": "Aucun contact trouvé",
+    "importContacts": "Importer des contacts",
+    "selectAll": "Tout sélectionner",
+    "deselectAll": "Tout désélectionner"
+  },
+  "blacklist": {
+    "title": "Liste noire",
+    "empty": "Aucun contact bloqué",
+    "addContact": "Ajouter un contact",
+    "blockedSince": "Bloqué depuis",
+    "unblock": "Débloquer",
+    "unblockConfirm": "Voulez-vous vraiment débloquer ce contact ?",
+    "callsBlocked": "Appels bloqués",
+    "messagesBlocked": "Messages bloqués"
+  },
+  "schedule": {
+    "title": "Planning",
+    "addRule": "Ajouter une règle",
+    "noRules": "Aucune règle planifiée",
+    "daily": "Quotidien",
+    "weekly": "Hebdomadaire",
+    "monthly": "Mensuel",
+    "once": "Une fois",
+    "from": "De",
+    "to": "À",
+    "days": {
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi",
+      "friday": "Vendredi",
+      "saturday": "Samedi",
+      "sunday": "Dimanche"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "general": "Général",
+    "security": "Sécurité",
+    "theme": "Thème",
+    "language": "Langue",
+    "notifications": "Notifications",
+    "about": "À propos",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "changePin": "Changer le PIN",
+    "exportData": "Exporter les données",
+    "importData": "Importer les données"
+  },
+  "security": {
+    "enterPin": "Entrez votre PIN",
+    "createPin": "Créez un PIN",
+    "confirmPin": "Confirmez votre PIN",
+    "wrongPin": "PIN incorrect",
+    "pinMismatch": "Les PIN ne correspondent pas"
+  },
+  "game": {
+    "title": "Cache-Cache",
+    "score": "Score",
+    "moves": "Coups",
+    "pairs": "Paires",
+    "newGame": "Nouvelle partie",
+    "congratulations": "Félicitations !",
+    "tryAgain": "Réessayer"
+  }
+}
