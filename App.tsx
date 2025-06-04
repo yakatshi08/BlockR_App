@@ -166,13 +166,17 @@ const App = () => {
           <TouchableOpacity 
             style={styles.actionButton}
             onPress={() => Alert.alert(
-              'Statistiques détaillées', 
-              `📊 Résumé BlockR :\n\n` +
-              `• ${stats.totalContacts} contacts au total\n` +
-              `• ${stats.blockedContacts} contacts bloqués\n` +
-              `• ${stats.totalCallsBlocked} appels bloqués\n` +
-              `• ${stats.totalMessagesBlocked} SMS bloqués\n\n` +
-              `💾 Toutes ces données sont sauvegardées automatiquement !`
+              '📊 Statistiques BlockR',
+              `Voici un résumé complet de votre protection :\n\n` +
+              `👥 Total contacts : ${stats.totalContacts}\n` +
+              `🚫 Contacts bloqués : ${stats.blockedContacts}\n` +
+              `📞 Appels bloqués : ${stats.totalCallsBlocked}\n` +
+              `💬 SMS bloqués : ${stats.totalMessagesBlocked}\n\n` +
+              `💾 Toutes vos données sont sauvegardées automatiquement !`,
+              [
+                { text: 'Fermer', style: 'cancel' },
+                { text: 'Voir les contacts', onPress: () => setCurrentTab('contacts') }
+              ]
             )}
           >
             <Text style={styles.actionText}>📊 Voir les statistiques</Text>
