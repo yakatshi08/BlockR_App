@@ -1,0 +1,38 @@
+# App BlockeR 🚫📱
+
+Une application mobile React Native pour bloquer l'accès aux applications distrayantes et améliorer votre productivité.
+
+![React Native](https://img.shields.io/badge/React%20Native-0.72-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-lightgrey.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+## 📋 Description
+
+App BlockeR est une application mobile cross-platform développée avec React Native qui vous permet de bloquer temporairement l'accès à certaines applications sur votre smartphone. Idéale pour rester concentré pendant le travail, les études, ou simplement pour réduire le temps d'écran et développer de meilleures habitudes numériques.
+
+## ✨ Fonctionnalités
+
+- **🔒 Blocage d'applications** : Sélectionnez et bloquez les applications distrayantes
+- **⏰ Programmation temporaire** : Définissez des périodes de blocage spécifiques
+- **🎯 Modes de concentration** : Différents profils selon vos besoins (travail, étude, sommeil)
+- **📊 Statistiques d'utilisation** : Suivez votre temps d'écran et vos habitudes
+- **🔄 Blocage récurrent** : Programmez des blocages quotidiens ou hebdomadaires
+- **🛡️ Mode strict** : Empêche la désactivation du blocage pendant la période active
+- **🌙 Mode sombre** : Interface adaptée pour tous les moments de la journée
+- **📱 Cross-platform** : Fonctionne sur Android et iOS
+
+## 🔧 Prérequis
+
+- **Node.js** 18 ou supérieur
+- **React Native CLI** ou **Expo CLI**
+- **Android Studio** (pour Android) ou **Xcode** (pour iOS)
+- **iOS 11.0+** ou **Android 6.0+** (API niveau 23)
+
+## 📦 Installation
+
+### Pour les développeurs
+
+1. **Clonez le repository :**
+```bash
+git clone https://github.com/yakatshi08/BlockR_App.git
+cd BlockR_App

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
   Alert,
+  TextInput,
 } from 'react-native';
 
 // Import des fonctions de stockage
@@ -15,6 +16,9 @@ import {
   loadContacts,
   addOrUpdateContact,
 } from './src/utils/StorageHelper';
+
+// Import du nouveau composant de blocage
+import AppBlockerScreen from './src/screens/AppBlockerScreen';
 
 // Types pour les données
 interface Contact {
@@ -31,6 +35,8 @@ const App = () => {
   const [currentTab, setCurrentTab] = useState('home');
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newContact, setNewContact] = useState({ name: '', phone: '' });
 
   // ================================
   // CHARGEMENT INITIAL DES DONNÉES
@@ -98,6 +104,46 @@ const App = () => {
   };
 
   // ================================
+  // FONCTION POUR AJOUTER UN CONTACT MANUEL
+  // ================================
+
+  const addManualContact = async () => {
+    if (!newContact.name.trim() || !newContact.phone.trim()) {
+      Alert.alert('Erreur', 'Veuillez remplir tous les champs');
+      return;
+    }
+
+    const manualContact: Contact = {
+      id: Date.now().toString(),
+      name: newContact.name.trim(),
+      phone: newContact.phone.trim(),
+      isBlocked: false,
+      callsBlocked: 0,
+      messagesBlocked: 0,
+      dateBlocked: new Date().toISOString(),
+    };
+
+    try {
+      const success = await addOrUpdateContact(manualContact);
+      
+      if (success) {
+        setContacts(prev => [...prev, manualContact]);
+        setNewContact({ name: '', phone: '' });
+        setShowAddForm(false);
+        Alert.alert(
+          'Contact ajouté !',
+          `"${manualContact.name}" a été ajouté à vos contacts.\n\nTéléphone: ${manualContact.phone}`
+        );
+      } else {
+        Alert.alert('Erreur', 'Impossible de sauvegarder le contact');
+      }
+    } catch (error) {
+      console.error('❌ Erreur ajout contact manuel:', error);
+      Alert.alert('Erreur', 'Une erreur est survenue lors de l\'ajout');
+    }
+  };
+
+  // ================================
   // STATISTIQUES CALCULÉES
   // ================================
 
@@ -114,12 +160,47 @@ const App = () => {
     };
   };
 
+  // ================================
+  // FONCTION POUR AFFICHER LES STATISTIQUES
+  // ================================
+
+  const showStatistics = () => {
+    try {
+      const stats = getStats();
+      console.log('📊 Affichage des statistiques:', stats);
+      
+      Alert.alert(
+        '📊 Statistiques BlockR',
+        `Voici un résumé complet de votre protection :\n\n` +
+        `👥 Total contacts : ${stats.totalContacts}\n` +
+        `🚫 Contacts bloqués : ${stats.blockedContacts}\n` +
+        `📞 Appels bloqués : ${stats.totalCallsBlocked}\n` +
+        `💬 SMS bloqués : ${stats.totalMessagesBlocked}\n\n` +
+        `💾 Toutes vos données sont sauvegardées automatiquement !`,
+        [
+          { text: 'Fermer', style: 'cancel' },
+          { 
+            text: 'Voir les contacts', 
+            onPress: () => {
+              console.log('Navigation vers contacts');
+              setCurrentTab('contacts');
+            }
+          }
+        ]
+      );
+    } catch (error) {
+      console.error('❌ Erreur affichage statistiques:', error);
+      Alert.alert('Test', 'Bouton statistiques cliqué ! (Mode debug)');
+    }
+  };
+
   const tabs = [
-    { id: 'home', label: 'Accueil' },
-    { id: 'contacts', label: 'Contacts' },
-    { id: 'blacklist', label: 'Liste noire' },
-    { id: 'schedule', label: 'Planning' },
-    { id: 'settings', label: 'Paramètres' },
+    { id: 'home', label: 'Accueil', icon: '🏠' },
+    { id: 'contacts', label: 'Contacts', icon: '📱' },
+    { id: 'blacklist', label: 'Liste noire', icon: '🚫' },
+    { id: 'appblocker', label: 'Blocage Apps', icon: '🔒' },
+    { id: 'schedule', label: 'Planning', icon: '📅' },
+    { id: 'settings', label: 'Paramètres', icon: '⚙️' },
   ];
 
   const renderHomeScreen = () => {
@@ -165,21 +246,16 @@ const App = () => {
           </TouchableOpacity>
           <TouchableOpacity 
             style={styles.actionButton}
-            onPress={() => Alert.alert(
-              '📊 Statistiques BlockR',
-              `Voici un résumé complet de votre protection :\n\n` +
-              `👥 Total contacts : ${stats.totalContacts}\n` +
-              `🚫 Contacts bloqués : ${stats.blockedContacts}\n` +
-              `📞 Appels bloqués : ${stats.totalCallsBlocked}\n` +
-              `💬 SMS bloqués : ${stats.totalMessagesBlocked}\n\n` +
-              `💾 Toutes vos données sont sauvegardées automatiquement !`,
-              [
-                { text: 'Fermer', style: 'cancel' },
-                { text: 'Voir les contacts', onPress: () => setCurrentTab('contacts') }
-              ]
-            )}
+            onPress={() => showStatistics()}
           >
             <Text style={styles.actionText}>📊 Voir les statistiques</Text>
+          </TouchableOpacity>
+          {/* NOUVEAU BOUTON POUR LE BLOCAGE D'APPS */}
+          <TouchableOpacity 
+            style={[styles.actionButton, { backgroundColor: '#ff4444' }]}
+            onPress={() => setCurrentTab('appblocker')}
+          >
+            <Text style={[styles.actionText, { color: 'white' }]}>🔒 Bloquer des Applications</Text>
           </TouchableOpacity>
         </View>
 
@@ -218,7 +294,23 @@ const App = () => {
     
     return (
       <View style={styles.screenContainer}>
-        <Text style={styles.screenTitle}>Contacts ({stats.totalContacts})</Text>
+        {/* Header avec bouton d'ajout */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <Text style={styles.screenTitle}>Contacts ({stats.totalContacts})</Text>
+          <TouchableOpacity 
+            style={{
+              backgroundColor: '#2196F3',
+              paddingHorizontal: 15,
+              paddingVertical: 8,
+              borderRadius: 20,
+            }}
+            onPress={() => setShowAddForm(!showAddForm)}
+          >
+            <Text style={{ color: 'white', fontSize: 14, fontWeight: '600' }}>
+              {showAddForm ? '✕ Annuler' : '+ Nouveau contact'}
+            </Text>
+          </TouchableOpacity>
+        </View>
         
         <View style={styles.summaryCard}>
           <Text style={styles.summaryTitle}>📊 Résumé</Text>
@@ -226,6 +318,67 @@ const App = () => {
           <Text style={styles.summaryText}>• {stats.blockedContacts} bloqués</Text>
           <Text style={styles.summaryText}>• {stats.totalContacts - stats.blockedContacts} autorisés</Text>
         </View>
+
+        {/* Formulaire d'ajout de contact */}
+        {showAddForm && (
+          <View style={{
+            backgroundColor: '#f8f9fa',
+            padding: 16,
+            borderRadius: 12,
+            marginBottom: 16,
+            borderWidth: 1,
+            borderColor: '#e9ecef',
+          }}>
+            <Text style={{ fontSize: 16, fontWeight: '600', marginBottom: 15, color: '#333' }}>
+              ➕ Ajouter un nouveau contact
+            </Text>
+            
+            <TextInput
+              style={{
+                borderWidth: 1,
+                borderColor: '#ddd',
+                borderRadius: 8,
+                padding: 12,
+                marginBottom: 10,
+                backgroundColor: 'white',
+                fontSize: 16,
+              }}
+              placeholder="Nom du contact"
+              value={newContact.name}
+              onChangeText={(text) => setNewContact(prev => ({ ...prev, name: text }))}
+            />
+            
+            <TextInput
+              style={{
+                borderWidth: 1,
+                borderColor: '#ddd',
+                borderRadius: 8,
+                padding: 12,
+                marginBottom: 15,
+                backgroundColor: 'white',
+                fontSize: 16,
+              }}
+              placeholder="Numéro de téléphone"
+              value={newContact.phone}
+              onChangeText={(text) => setNewContact(prev => ({ ...prev, phone: text }))}
+              keyboardType="phone-pad"
+            />
+            
+            <TouchableOpacity
+              style={{
+                backgroundColor: '#4caf50',
+                padding: 12,
+                borderRadius: 8,
+                alignItems: 'center',
+              }}
+              onPress={addManualContact}
+            >
+              <Text style={{ color: 'white', fontSize: 16, fontWeight: '600' }}>
+                💾 Enregistrer le contact
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         {contacts.length > 0 ? (
           <View style={styles.contactsList}>
@@ -246,7 +399,7 @@ const App = () => {
           <View style={styles.emptyState}>
             <Text style={styles.emptyTitle}>Aucun contact</Text>
             <Text style={styles.emptySubtitle}>
-              Ajoutez des contacts de test depuis l'accueil pour voir la liste
+              Utilisez le bouton "+ Nouveau contact" pour ajouter votre premier contact
             </Text>
           </View>
         )}
@@ -340,6 +493,8 @@ const App = () => {
         return renderContactsScreen();
       case 'blacklist':
         return renderBlacklistScreen();
+      case 'appblocker':
+        return <AppBlockerScreen onBack={() => setCurrentTab('home')} />;
       case 'schedule':
         return renderOtherScreen('Planning');
       case 'settings':
@@ -353,14 +508,20 @@ const App = () => {
     <View style={styles.appContainer}>
       {renderContent()}
       
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation MODERNISÉE */}
       <View style={styles.bottomNav}>
         {tabs.map(tab => (
           <TouchableOpacity
             key={tab.id}
-            style={styles.tab}
+            style={[styles.tab, currentTab === tab.id && styles.activeTab]}
             onPress={() => setCurrentTab(tab.id)}
           >
+            <Text style={[
+              styles.tabIcon,
+              currentTab === tab.id && styles.activeTabIcon
+            ]}>
+              {tab.icon}
+            </Text>
             <Text style={[
               styles.tabText,
               currentTab === tab.id && styles.activeTabText
@@ -513,16 +674,42 @@ const styles = StyleSheet.create({
   // Placeholder
   placeholder: { fontSize: 16, color: '#666', textAlign: 'center', marginTop: 40 },
 
-  // Navigation
+  // Navigation MODERNISÉE
   bottomNav: { 
     flexDirection: 'row', 
     backgroundColor: 'white', 
     elevation: 8, 
-    height: 60 
+    height: 70,
+    borderTopWidth: 1,
+    borderTopColor: '#f0f0f0',
   },
-  tab: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  tabText: { fontSize: 12, color: '#666' },
-  activeTabText: { color: '#2196F3', fontWeight: 'bold' },
+  tab: { 
+    flex: 1, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  activeTab: {
+    backgroundColor: '#e3f2fd',
+  },
+  tabIcon: {
+    fontSize: 18,
+    marginBottom: 4,
+  },
+  activeTabIcon: {
+    fontSize: 20,
+  },
+  tabText: { 
+    fontSize: 10, 
+    color: '#666',
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  activeTabText: { 
+    color: '#2196F3', 
+    fontWeight: '700',
+    fontSize: 11,
+  },
 });
 
 export default App;
