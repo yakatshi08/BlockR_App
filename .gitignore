@@ -48,3 +48,10 @@ android/app/build/
 
 # System files
 file-system.probe
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/app/.cxx/
+*.iml
+.idea/
